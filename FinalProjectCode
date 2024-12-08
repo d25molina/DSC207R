@@ -1,0 +1,9 @@
+from google.colab import drive
+drive.mount('/content/drive')
+
+df = pd.read_csv('/content/drive/MyDrive/MLB_2024stats.csv')
+df_2 = pd.read_csv('/content/drive/MyDrive/mlb_stats_2024.csv')
+df = df.sort_values(by = "last_name, first_name", ascending = True).reset_index(drop = True)
+df_2sub = df_2[['Team', 'Lg']].reset_index(drop = True)
+main_df = pd.concat([df, df_2sub], axis = 1)
+main_df
